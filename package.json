@@ -1,0 +1,29 @@
+{
+  "name": "automation_tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "linux": "./node_modules/.bin/selenium-standalone install && ./node_modules/.bin/selenium-standalone start",
+    "windows": "webdriver-manager update && webdriver-manager start",
+    "test": "protractor protractor.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mishanya1772/automation_tests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mishanya1772/automation_tests/issues"
+  },
+  "homepage": "https://github.com/mishanya1772/automation_tests#readme",
+  "dependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "jasmine-spec-reporter": "^4.2.1",
+    "protractor": "^5.4.2",
+    "selenium-standalone": "^6.16.0"
+  }
+}
