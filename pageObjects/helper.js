@@ -29,8 +29,17 @@ class basicActions {
     });
   }
 
+  async clickEnter(element) {
+    return element.sendKeys(protractor.Key.ENTER);
+  }
+
   async waitForElement(element) {
     return browser.wait(EC.visibilityOf(element), 6000);
+  }
+
+  async getTextFromElement(element) {
+    await browser.wait(EC.visibilityOf(element), 6000);
+    return element.getText();
   }
 }
 

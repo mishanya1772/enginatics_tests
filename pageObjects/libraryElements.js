@@ -5,6 +5,7 @@ const elements = {
   flipSwitchLabel: $('.flipswitch-label'),
   backToLibraryButton: $('div > div.back > a'),
   firstCategoriesInTable: $$('td:nth-child(3) > a:nth-child(1)').get(0),
+  allCategoriesInTable: $$('td:nth-child(3) > a:nth-child(1)'),
   categoriesInCategoriesField: $$('li.select2-selection__choice').get(0),
   categoryFilterField: $('ul > li > input'),
   firstItemInCategoryFilter: $$('li:nth-child(1) > div').get(0),
@@ -13,6 +14,9 @@ const elements = {
   allXMLDocuments: $$('center > a:nth-child(2)'),
   showEntries: $('label > select'),
   paginationThirdPage: $('span > a:nth-child(3)'),
+  spoilerButton: $('div.fusion-toggle-icon-wrapper > i'),
+  openedTextUnderTheSpoiler: $('.panel-collapse.collapse.in'),
+  searchField: $('#search_input'),
 };
 
 

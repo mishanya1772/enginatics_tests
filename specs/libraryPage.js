@@ -67,4 +67,42 @@ describe('Library page', () => {
     expect(await browser.getCurrentUrl()).toBe('https://www.enginatics.com/library/?pg=3');
     return page.checkStatusCode();
   });
+
+  it('Main spoiler is opened on main library page ', async () => {
+    await page.clickOnElement(element.spoilerButton);
+    await page.waitForElement(element.openedTextUnderTheSpoiler);
+    return page.checkStatusCode();
+  });
+
+  it('Search field found the right library', async () => {
+    const nameOfSecondLibrary = await page.getTextFromElement(element.listOfNamesLibrary.get(2));
+    await page.inputText(nameOfSecondLibrary, element.searchField);
+    await page.clickEnter(element.searchField);
+    expect(await browser.getCurrentUrl()).toContain('/?pg=1&find=');
+    return page.checkStatusCode();
+  });
+
+  it('URL has all items after filtering the libraries', async () => {
+    await page.clickOnElement(element.paginationThirdPage);
+    await page.clickOnElement(element.firstCategoriesInTable);
+    const filterName = await page.getTextFromElement(element.firstCategoriesInTable);
+    expect(await browser.getCurrentUrl()).toContain(filterName.slice(0, -1));
+    expect(await browser.getCurrentUrl()).toContain('/?pg=3');
+    return page.checkStatusCode();
+  });
+
+  it('Main spoiler is opened on main library page ', async () => {
+    const catageroName = await page.getTextFromElement(element.firstCategoriesInTable);
+
+    await page.clickOnElement(element.firstCategoriesInTable);
+    await browser.sleep(1500); // need a little more time for writing test with smart Waiter
+    // await page.waitForElement($('#reports_table_processing')); -- this element can help to delete browser.sleep
+
+    const count = await element.allCategoriesInTable.count();
+    for (let i = 0; i < count; i++) {
+      expect(element.allCategoriesInTable.get(i).getText()).toContain(catageroName);
+    }
+
+    return page.checkStatusCode();
+  });
 });
