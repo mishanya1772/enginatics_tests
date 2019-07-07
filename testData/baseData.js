@@ -1,8 +1,7 @@
 const data = {
   pricing: 'https://www.enginatics.com/pricing/',
   username: 'USERNAME',
-  password: 'PASSWORD'
-
+  password: 'PASSWORD',
 };
 
 module.exports = data;
