@@ -2,7 +2,11 @@ const element = require('../pageObjects/libraryElements');
 const page = new (require('../pageObjects/helper'))();
 
 describe('Library page', () => {
-  beforeEach(() => browser.get('https://www.enginatics.com/library/'));
+  beforeEach(() => {
+    browser.get('https://www.enginatics.com/library/');
+    browser.executeScript('window.sessionStorage.clear();');
+    browser.executeScript('window.localStorage.clear();');
+  });
 
   it('Name table contains default 50 libraries', async () => {
     await page.waitForElement(element.listOfNamesLibrary.get(2));
@@ -91,12 +95,15 @@ describe('Library page', () => {
     return page.checkStatusCode();
   });
 
-  it('Main spoiler is opened on main library page ', async () => {
+  it('All libraries are filtered by choose category', async () => {
     const catageroName = await page.getTextFromElement(element.firstCategoriesInTable);
 
     await page.clickOnElement(element.firstCategoriesInTable);
-    await browser.sleep(1500); // need a little more time for writing test with smart Waiter
-    // await page.waitForElement($('#reports_table_processing')); -- this element can help to delete browser.sleep
+
+    /* like a smart Wait for allCategoriesInTable element */
+    await page.waitForElement(element.spoilerButton);
+    await page.clickOnElement(element.spoilerButton);
+    await page.waitForElement(element.allCategoriesInTable.get(10));
 
     const count = await element.allCategoriesInTable.count();
     for (let i = 0; i < count; i++) {

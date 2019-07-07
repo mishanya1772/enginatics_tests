@@ -3,7 +3,11 @@ const page = new (require('../pageObjects/helper'))();
 const data = require('../testData/baseData');
 
 describe('Login Page', () => {
-  beforeEach(() => browser.get('https://www.enginatics.com/wp-admin/'));
+  beforeEach(() => {
+    browser.get('https://www.enginatics.com/wp-admin/');
+    browser.executeScript('window.sessionStorage.clear();');
+    return browser.executeScript('window.localStorage.clear();');
+  });
 
   it('Google calendar is synced after clicking on Sync Now button', async () => {
     await page.inputText(data.username, element.usernameField);

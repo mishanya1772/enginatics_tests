@@ -2,7 +2,11 @@ const element = require('../pageObjects/commonElements');
 const page = new (require('../pageObjects/helper'))();
 
 describe('Pricing page', () => {
-  beforeEach(() => browser.get('https://www.enginatics.com/pricing/'));
+  beforeEach(() => {
+    browser.get('https://www.enginatics.com/pricing/');
+    browser.executeScript('window.sessionStorage.clear();');
+    return browser.executeScript('window.localStorage.clear();');
+  });
 
   it('Open main links in Header', () => {
     const headerLinks = [element.blitzReport, element.library, element.resources,
