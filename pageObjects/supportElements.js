@@ -1,5 +1,5 @@
 const elements = {
-  privacyPoliceLink: $('span > a:nth-child(2)'),
+  privacyPoliceLink: $('label > span > a'),
   licenceAgreementForm: $('.fade.modal-1.EULA.in'),
   licenceAgreementLink: $('span > label > span > a:nth-child(1)'),
   firstNameIsRequiredNotif: $(':nth-child(2) > span > span'),

@@ -14,7 +14,7 @@ describe('Support page', () => {
     return page.checkStatusCode();
   });
 
-  it('Licence Agreement is opened', async () => {
+  xit('Licence Agreement is opened', async () => {
     await page.clickOnElement(supportElement.licenceAgreementLink);
     await page.waitForElement(supportElement.licenceAgreementForm);
     return page.checkStatusCode();
@@ -33,7 +33,7 @@ describe('Support page', () => {
     return page.checkStatusCode();
   });
 
-  it('Privacy and Agreement are mandatory field and highlighted after trying to send message without marking it', async () => {
+  it('Privacy is mandatory field and highlighted after trying to send message without marking it', async () => {
     await page.inputText('test', await supportElement.firstNameIsRequiredField);
     await page.inputText('test', supportElement.lastNameIsRequiredField);
     await page.inputText('test@test.com', supportElement.emailIsRequiredField);
