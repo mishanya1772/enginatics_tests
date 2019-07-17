@@ -31,4 +31,12 @@ describe('Forum page', () => {
     expect(element.headerOfSearchPage.getText()).toContain(nameOfPost);
     return page.checkStatusCode();
   });
+
+  it('Categories is opened in a new page after clicking on it', async () => {
+    await page.clickOnElement(element.allTopics.get(0));
+    const categoryName = await page.getTextFromElement(element.allCategories.get(0));
+    await page.clickOnElement(element.allCategories.get(0));
+    expect(browser.getCurrentUrl()).toContain(categoryName);
+    return page.checkStatusCode();
+  });
 });
