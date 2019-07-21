@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "linux": "./node_modules/.bin/selenium-standalone install && ./node_modules/.bin/selenium-standalone start && protractor protractor.conf.js",
+    "linux": "protractor protractor.conf.js",
     "windows": "webdriver-manager update && webdriver-manager start",
     "test": "protractor protractor.conf.js"
   },
