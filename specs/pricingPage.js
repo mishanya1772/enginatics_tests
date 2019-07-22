@@ -29,7 +29,7 @@ describe('Pricing page', () => {
     }
   });
 
-  fit('Open main links in buttom', () => {
+  it('Open main links in buttom', () => {
     for (let i = 0; i < 5; i++) {
       page.clickOnElement(element.forCustomerColumn.get(i));
       page.checkStatusCode();
