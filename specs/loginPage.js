@@ -9,7 +9,7 @@ describe('Login Page', () => {
     return browser.executeScript('window.localStorage.clear();');
   });
 
-  it('Google calendar is synced after clicking on Sync Now button', async () => {
+  xit('Google calendar is synced after clicking on Sync Now button', async () => { // invalid credentials
     await page.inputText(data.username, element.usernameField);
     await page.inputText(data.password, element.passwordField);
     await page.clickOnElement(element.loginButton);
