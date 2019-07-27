@@ -9,6 +9,7 @@ module.exports = {
     },
     "extends": "airbnb-base",
     rules:{
+        "linebreak-style": 0,
         "no-plusplus": [2, { allowForLoopAfterthoughts: true }],
         "global-require": 0,
         "class-methods-use-this": [1],

@@ -3,7 +3,7 @@ const page = new (require('../pageObjects/helper'))();
 
 describe('Forum page', () => {
   beforeEach(() => {
-    browser.get('https://www.enginatics.com/forums/forum/reports/');
+    browser.get('https://www.enginatics.com/forum/reports/');
     browser.executeScript('window.sessionStorage.clear();');
     browser.executeScript('window.localStorage.clear();');
   });
