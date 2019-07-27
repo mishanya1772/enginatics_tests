@@ -28,7 +28,9 @@ describe('Forum page', () => {
     const nameOfPost = await page.getTextFromElement(element.firstPopularPostOnForm.get(0));
     await page.inputText(nameOfPost, element.searchField);
     await page.clickEnter(element.searchField);
-    expect(element.headerOfSearchPage.getText()).toContain(nameOfPost);
+    const nameAfterSearching = await page.getTextFromElement(element.firstPopularPostOnForm.get(0));
+
+    expect(nameAfterSearching).toContain(nameOfPost);
     return page.checkStatusCode();
   });
 

@@ -7,8 +7,8 @@
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "windows": "webdriver-manager update && webdriver-manager start",
     "linux": "./node_modules/.bin/selenium-standalone install && ./node_modules/.bin/selenium-standalone start",
-    "jenkins": "protractor jenkins.conf.js --retry-failed",
-    "tests": "protractor protractor.conf.js --retry-failed"
+    "jenkins": "protractor jenkins.conf.js",
+    "test": "protractor protractor.conf.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "jasmine-allure-reporter": "^1.0.2",
     "jasmine-spec-reporter": "^4.2.1",
     "protractor": "^5.4.2",
-    "selenium-standalone": "^6.16.0"
+    "selenium-standalone": "^6.16.0",
+    "protractor-retry": "1.2.9"
   }
 }

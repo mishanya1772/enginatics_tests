@@ -8,14 +8,13 @@ exports.config = {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
-      args: ['--window-size=1920,1080'], //   args: ['no-sandbox', '--headless'],
+      args: ['--window-size=1920,1080'],
     },
     maxInstances: 2,
   },
   jasmineNodeOpts: {
     showColors: true,
   },
-
   onPrepare() {
     browser.ignoreSynchronization = true;
   },
