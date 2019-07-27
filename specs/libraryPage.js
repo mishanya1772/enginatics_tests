@@ -103,7 +103,7 @@ describe('Library page', () => {
     /* like a smart Wait for allCategoriesInTable element */
     await page.waitForElement(element.spoilerButton);
     await page.clickOnElement(element.spoilerButton);
-    await browser.sleep(700);
+    await browser.sleep(800);
     await page.waitForElement(element.allCategoriesInTable.get(10));
 
     const count = await element.allCategoriesInTable.count();

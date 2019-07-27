@@ -16,7 +16,7 @@ describe('Report page', () => {
     await page.clickOnElement(element.spoilerButton);
     await browser.sleep(500);
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
-    expect(reportElement.usernameField.getAttribute('href')).toEqual(url);
+    expect(await reportElement.usernameField.getAttribute('href')).toEqual(url);
 
     return page.checkStatusCode();
   });
