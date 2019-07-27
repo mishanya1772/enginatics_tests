@@ -60,7 +60,7 @@ describe('Report page', () => {
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
     await page.clickOnElement(reportElement.askAQuestionButton);
 
-    expect(await browser.getCurrentUrl()).toContain('https://www.enginatics.com/forums/topic/');
+    expect(await browser.getCurrentUrl()).toContain('https://www.enginatics.com/topic/');
     expect(await reportElement.submitButton.isPresent()).toEqual(true);
     return page.checkStatusCode();
   });
