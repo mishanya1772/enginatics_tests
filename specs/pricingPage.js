@@ -18,7 +18,7 @@ describe('Pricing page', () => {
     }
   });
 
-  it("Open FAQ's list and check texts", () => {
+  xit("Open FAQ's list and check texts", () => { // there is no FAQ's
     const linksOfFAQ = [element.firstFAQ];
     const textsofFAQ = [element.textForFirstFAQ];
 

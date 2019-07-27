@@ -13,11 +13,8 @@ describe('Report page', () => {
     await page.clickOnElement(element.firstCategoriesInTable);
     const url = await browser.getCurrentUrl();
 
-    /* like a smart Wait for listOfNamesLibrary element */
-    await page.waitForElement(element.spoilerButton);
     await page.clickOnElement(element.spoilerButton);
-    await page.waitForElement(element.listOfNamesLibrary.get(0));
-
+    await browser.sleep(500);
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
     expect(reportElement.usernameField.getAttribute('href')).toEqual(url);
 
