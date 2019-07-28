@@ -9,6 +9,9 @@ const elements = {
   listButton: $('#tribe-bar-views-option-list'),
   allPicturesFromEvents: $$('.event-location-image > a > img'),
   linksOfAllEvents: $$('h3 > a'),
+  facebookLink: $('.fusion-facebook.fusion-icon-facebook'),
+  linkedinLink: $('.fusion-linkedin.fusion-icon-linkedin'),
+  emailLink: $('.fusion-icon-mail.fusion-last-social-icon'),
 };
 
 module.exports = elements;

@@ -8,7 +8,7 @@ class basicActions {
 
   async inputText(text, element) {
     await browser.wait(EC.visibilityOf(element), 6000);
-    return element.clear().sendKeys(text);
+    return element.sendKeys(text);
   }
 
   checkStatusCode() {
@@ -40,6 +40,10 @@ class basicActions {
   async getTextFromElement(element) {
     await browser.wait(EC.visibilityOf(element), 6000);
     return element.getText();
+  }
+
+  async checkCurrentDateInCalendar(date) {
+    return $(`#tribe-events-daynum-${date}-0`).getCssValue('background-color');
   }
 }
 
