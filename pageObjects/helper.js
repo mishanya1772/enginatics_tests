@@ -8,7 +8,7 @@ class basicActions {
 
   async inputText(text, element) {
     await browser.wait(EC.visibilityOf(element), 6000);
-    return element.sendKeys(text);
+    return element.clear().sendKeys(text);
   }
 
   checkStatusCode() {
