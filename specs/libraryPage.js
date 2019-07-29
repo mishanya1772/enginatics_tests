@@ -36,7 +36,7 @@ describe('Library page', () => {
   it('All categories in category field are deleted after clicking on X button', async () => {
     await page.clickOnElement(element.categoryFilterField);
     await page.clickOnElement(element.firstItemInCategoryFilter);
-    await browser.sleep(500);
+    await page.waitForElement(element.deleteButtonForCategoryField);
     await page.clickOnElement(element.deleteButtonForCategoryField);
     expect(await element.categoriesInCategoriesField.isPresent()).toEqual(false);
     return page.checkStatusCode();
@@ -99,12 +99,7 @@ describe('Library page', () => {
     const catageroName = await page.getTextFromElement(element.firstCategoriesInTable);
 
     await page.clickOnElement(element.firstCategoriesInTable);
-
-    /* like a smart Wait for allCategoriesInTable element */
-    await browser.sleep(1000);
-    await page.waitForElement(element.spoilerButton);
-    await page.clickOnElement(element.spoilerButton);
-    await page.waitForElement(element.allCategoriesInTable.get(10));
+    await page.waitForElement(element.allCategoriesInTable.get(20));
 
     const count = await element.allCategoriesInTable.count();
     for (let i = 0; i < count; i++) {
