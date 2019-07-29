@@ -99,7 +99,8 @@ describe('Library page', () => {
     const catageroName = await page.getTextFromElement(element.firstCategoriesInTable);
 
     await page.clickOnElement(element.firstCategoriesInTable);
-    await page.waitForElement(element.allCategoriesInTable.get(20));
+    await browser.sleep(4000);
+    await page.waitForElement(element.allCategoriesInTable.get(10));
 
     const count = await element.allCategoriesInTable.count();
     for (let i = 0; i < count; i++) {
