@@ -11,13 +11,12 @@ describe('Report page', () => {
 
   it('Back to library link has URL with all filtering items', async () => {
     await page.clickOnElement(element.firstCategoriesInTable);
+    await page.waitForElement(element.flipSwitchLabel);
     const url = await browser.getCurrentUrl();
-
     await page.clickOnElement(element.spoilerButton);
-    await browser.sleep(500);
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
+    await page.waitForElement(element.flipSwitchLabel);
     expect(await reportElement.usernameField.getAttribute('href')).toEqual(url);
-
     return page.checkStatusCode();
   });
 
