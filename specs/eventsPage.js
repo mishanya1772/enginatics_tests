@@ -14,7 +14,7 @@ describe('Event page', () => {
     await page.inputText('2018-05', element.fieldForDate);
     await page.clickEnter(element.fieldForDate);
     await browser.sleep(4000);
-    await page.waitForElement(element.allDatesInCalendar.get(0));
+    await page.waitForElement(element.allDatesInCalendar.get(3));
     await page.clickOnElement(element.arrowToRight);
     await page.waitForElement(element.allDatesInCalendar.get(10));
     await page.clickOnElement(element.allevenets.get(0));
