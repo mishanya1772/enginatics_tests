@@ -29,6 +29,7 @@ describe('Library page', () => {
 
   it("After choosing first category in column, it's added to category field", async () => {
     await page.clickOnElement(element.firstCategoriesInTable);
+    await browser.sleep(3000);
     await page.waitForElement(element.categoriesInCategoriesField);
     expect(await element.categoriesInCategoriesField.isEnabled()).toEqual(true);
     return page.checkStatusCode();
