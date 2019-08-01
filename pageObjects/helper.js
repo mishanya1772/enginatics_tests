@@ -43,7 +43,7 @@ class basicActions {
   }
 
   async checkCurrentDateInCalendar(date) {
-    return $(`#tribe-events-daynum-${date}-0`).getCssValue('background-color');
+    return $(`#tribe-events-daynum-${date < 10 ? (date.slice(1)) : date}-0`).getCssValue('background-color');
   }
 }
 
