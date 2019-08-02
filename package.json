@@ -8,7 +8,8 @@
     "windows": "webdriver-manager update && webdriver-manager start",
     "linux": "./node_modules/.bin/selenium-standalone install && ./node_modules/.bin/selenium-standalone start",
     "jenkins": "protractor jenkins.conf.js",
-    "test": "protractor protractor.conf.js"
+    "test": "protractor protractor.conf.js",
+    "parallel": "protractor parallelDefault.conf.js"
   },
   "repository": {
     "type": "git",
