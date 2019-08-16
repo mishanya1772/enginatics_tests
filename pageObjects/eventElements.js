@@ -12,6 +12,7 @@ const elements = {
   facebookLink: $('.fusion-facebook.fusion-icon-facebook'),
   linkedinLink: $('.fusion-linkedin.fusion-icon-linkedin'),
   emailLink: $('.fusion-icon-mail.fusion-last-social-icon'),
+  allDatesInCalendar: $$('.mobile-trigger'),
 };
 
 module.exports = elements;

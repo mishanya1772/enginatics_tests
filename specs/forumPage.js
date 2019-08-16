@@ -37,6 +37,7 @@ describe('Forum page', () => {
   it('Categories is opened in a new page after clicking on it', async () => {
     const categoryName = await page.getTextFromElement(element.allCategories.get(0));
     await page.clickOnElement(element.allCategories.get(0));
+    await page.waitForElement(element.allCategories.get(10));
     expect(await browser.getCurrentUrl()).toContain(categoryName.slice(0, -1));
     return page.checkStatusCode();
   });
