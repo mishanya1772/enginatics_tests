@@ -10,14 +10,14 @@ exports.config = {
       maxInstances: 1,
       sequential: true,
       browserName: 'chrome',
-      specs: ['./specs/eventsPage.js', './specs/forumPage.js', './specs/libraryPage.js'],
+      specs: ['../specs/eventsPage.js', '../specs/forumPage.js', '../specs/libraryPage.js'],
     },
     {
       shardTestFiles: true,
       maxInstances: 1,
       sequential: true,
       browserName: 'chrome',
-      specs: ['./specs/supportPage.js', './specs/pricingPage.js', './specs/reportPage.js',
+      specs: ['../specs/supportPage.js', '../specs/pricingPage.js', '../specs/reportPage.js',
       ],
     }],
   capabilities: {
