@@ -1,3 +1,5 @@
+const { SpecReporter } = require('jasmine-spec-reporter');
+
 exports.config = {
   framework: 'jasmine2',
   specs: ['../specs/*'],
@@ -15,10 +17,16 @@ exports.config = {
   },
 
   onPrepare() {
+    browser.ignoreSynchronization = true;
     const AllureReporter = require('jasmine-allure-reporter');
     jasmine.getEnv().addReporter(new AllureReporter({
       resultsDir: 'allure-results',
     }));
-    browser.ignoreSynchronization = true;
+    jasmine.getEnv().addReporter(new SpecReporter({
+      displayFailuresSummary: true,
+      displayFailuredSpec: true,
+      displaySuiteNumber: true,
+      displaySpecDuration: true,
+    }));
   },
 };
