@@ -29,7 +29,9 @@ describe('Event page', () => {
     await page.clickOnElement(element.monthButton);
     await page.clickOnElement(element.listButton);
     const countOfPictures = await element.allPicturesFromEvents.count();
-    for (let i = 0; i < countOfPictures; i++) {
+    await browser.sleep(4000);
+    await page.waitForElement(element.allPicturesFromEvents.get(3));
+    for (let i = 0; i < countOfPictures/3; i++) {
       expect(element.allPicturesFromEvents.get(i).getAttribute('src')).toContain(data.eventsPicturesHref);
     }
     return page.checkStatusCode();
