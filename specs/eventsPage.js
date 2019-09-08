@@ -20,8 +20,8 @@ describe('Event page', () => {
     await page.clickOnElement(element.allevenets.get(0));
     const startDateOfEvent = await page.getTextFromElement(element.eventDateStart);
 
-    expect(startDateOfEvent).toContain('May 16, 2018');
-    expect(element.backToCalendarLing.getAttribute('href')).toContain('events/2018-05');
+    expect(startDateOfEvent).toContain('June 10, 2018');
+    expect(element.backToCalendarLing.getAttribute('href')).toContain('events/2018-06');
     return page.checkStatusCode();
   });
 
