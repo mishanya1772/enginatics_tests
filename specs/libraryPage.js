@@ -29,7 +29,6 @@ describe('Library page', () => {
 
   it("After choosing first category in column, it's added to category field", async () => {
     await page.clickOnElement(element.firstCategoriesInTable);
-    await browser.sleep(3000);
     await page.waitForElement(element.categoriesInCategoriesField);
     expect(await element.categoriesInCategoriesField.isEnabled()).toEqual(true);
     return page.checkStatusCode();
@@ -38,7 +37,6 @@ describe('Library page', () => {
   it('All categories in category field are deleted after clicking on X button', async () => {
     await page.clickOnElement(element.categoryFilterField);
     await page.clickOnElement(element.firstItemInCategoryFilter);
-    await browser.sleep(4000);
     await page.waitForElement(element.deleteButtonForCategoryField);
     await page.clickOnElement(element.deleteButtonForCategoryField);
     expect(await element.categoriesInCategoriesField.isPresent()).toEqual(false);
@@ -109,7 +107,6 @@ describe('Library page', () => {
     for (let i = 0; i < count; i++) {
       expect(element.allCategoriesInTable.get(i).getText()).toContain(catageroName);
     }
-
     return page.checkStatusCode();
   });
 });

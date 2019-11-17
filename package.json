@@ -23,13 +23,13 @@
   "homepage": "https://github.com/mishanya1772/automation_tests#readme",
   "dependencies": {
     "protractor": "^5.4.2",
-    "jasmine-allure-reporter": "^1.0.2",
-    "eslint": "^5.16.0",
-    "jasmine-spec-reporter": "^4.2.1"
+    "eslint": "^5.16.0"
   },
   "devDependencies": {
     "protractor-flake": "^2.5.0",
+    "jasmine-allure-reporter": "^1.0.2",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.3"
+    "eslint-plugin-import": "^2.17.3",
+    "jasmine-spec-reporter": "^4.2.1"
   }
 }
