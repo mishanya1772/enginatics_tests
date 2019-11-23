@@ -2,7 +2,7 @@ const element = require('../pageObjects/libraryElements');
 const page = new (require('../pageObjects/helper'))();
 const reportElement = require('../pageObjects/reportElements');
 
-describe('Report page', () => {
+describe('On the Report page', () => {
   beforeEach(() => {
     browser.get('https://www.enginatics.com/library/');
     browser.executeScript('window.sessionStorage.clear();');

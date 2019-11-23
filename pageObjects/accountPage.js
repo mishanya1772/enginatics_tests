@@ -4,7 +4,6 @@ const elements = {
   loginButton: $('#wp-submit'),
   sync_NowButton: $('#sync_now'),
   GCalendarSyncLink: $('#toplevel_page_events-calendar-sync'),
-
 };
 
 module.exports = elements;

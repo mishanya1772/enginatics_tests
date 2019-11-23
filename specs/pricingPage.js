@@ -1,14 +1,14 @@
 const element = require('../pageObjects/commonElements');
 const page = new (require('../pageObjects/helper'))();
 
-describe('Pricing page', () => {
+describe('On the Pricing page', () => {
   beforeEach(() => {
     browser.get('https://www.enginatics.com/pricing/');
     browser.executeScript('window.sessionStorage.clear();');
     return browser.executeScript('window.localStorage.clear();');
   });
 
-  it('Open main links in Header', () => {
+  it('All main links are opened in Header', () => {
     const headerLinks = [element.blitzReport, element.library, element.resources,
       element.about, element.contactUs];
 
@@ -18,7 +18,7 @@ describe('Pricing page', () => {
     }
   });
 
-  xit("Open FAQ's list and check texts", () => { // there is no FAQ's
+  xit("FAQ's list is opened and contains valid text", () => { // there is no FAQ's
     const linksOfFAQ = [element.firstFAQ];
     const textsofFAQ = [element.textForFirstFAQ];
 
@@ -29,7 +29,7 @@ describe('Pricing page', () => {
     }
   });
 
-  it('Open main links in buttom', () => {
+  it('Main links are opened in the bottom', () => {
     for (let i = 0; i < 5; i++) {
       page.clickOnElement(element.forCustomerColumn.get(i));
       page.checkStatusCode();

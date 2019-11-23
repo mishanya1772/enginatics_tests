@@ -2,7 +2,7 @@ const element = require('../pageObjects/eventElements');
 const page = new (require('../pageObjects/helper'))();
 const data = require('../testData/baseData');
 
-describe('Event page', () => {
+describe('On the Event page', () => {
   beforeEach(() => {
     browser.get('https://www.enginatics.com/events/');
     browser.executeScript('window.sessionStorage.clear();');
@@ -13,7 +13,7 @@ describe('Event page', () => {
     await element.fieldForDate.clear();
     await page.inputText('2018-05', element.fieldForDate);
     await page.clickEnter(element.fieldForDate);
-    await browser.sleep(4000);
+
     await page.waitForElement(element.allDatesInCalendar.get(3));
     await page.clickOnElement(element.arrowToRight);
     await page.waitForElement(element.allDatesInCalendar.get(10));
@@ -29,7 +29,7 @@ describe('Event page', () => {
     await page.clickOnElement(element.monthButton);
     await page.clickOnElement(element.listButton);
     const countOfPictures = await element.allPicturesFromEvents.count();
-    await browser.sleep(4000);
+
     await page.waitForElement(element.allPicturesFromEvents.get(3));
     for (let i = 0; i < countOfPictures/3; i++) {
       expect(element.allPicturesFromEvents.get(i).getAttribute('src')).toContain(data.eventsPicturesHref);
@@ -47,7 +47,7 @@ describe('Event page', () => {
     return page.checkStatusCode();
   });
 
-  it('Calendar display current date', async () => {
+  it('Calendar displays current date', async () => {
     const today = new Date();
     const date = String(today.getDate()).padStart(2, '0');
     const cssValue = await page.checkCurrentDateInCalendar(date);

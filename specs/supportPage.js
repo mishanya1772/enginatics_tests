@@ -1,7 +1,7 @@
 const page = new (require('../pageObjects/helper'))();
 const supportElement = require('../pageObjects/supportElements');
 
-describe('Support page', () => {
+describe('On the Support page', () => {
   beforeEach(() => {
     browser.get('https://www.enginatics.com/support/');
     browser.executeScript('window.sessionStorage.clear();');

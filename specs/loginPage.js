@@ -2,7 +2,7 @@ const element = require('../pageObjects/accountPage');
 const page = new (require('../pageObjects/helper'))();
 const data = require('../testData/baseData');
 
-describe('Login Page', () => {
+describe('On the Login Page', () => {
   beforeEach(() => {
     browser.get('https://www.enginatics.com/wp-admin/');
     browser.executeScript('window.sessionStorage.clear();');
