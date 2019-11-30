@@ -2,12 +2,8 @@ const element = require('../pageObjects/accountPage');
 const page = new (require('../pageObjects/helper'))();
 const data = require('../testData/baseData');
 
-describe('Login Page', () => {
-  beforeEach(() => {
-    browser.get('https://www.enginatics.com/wp-admin/');
-    browser.executeScript('window.sessionStorage.clear();');
-    return browser.executeScript('window.localStorage.clear();');
-  });
+describe('On the Login Page', () => {
+  beforeEach(() => page.openMainPageAndCleanAllCache(data.profilePage));
 
   xit('Google calendar is synced after clicking on Sync Now button', async () => { // invalid credentials
     await page.inputText(data.username, element.usernameField);
