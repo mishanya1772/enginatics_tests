@@ -46,6 +46,7 @@ describe('On the Event page', () => {
   it('Calendar displays current date', async () => {
     const today = new Date();
     const date = String(today.getDate()).padStart(2, '0');
+
     const cssValue = await page.checkCurrentDateInCalendar(date);
 
     expect(cssValue).toBe('rgba(240, 4, 2, 1)');

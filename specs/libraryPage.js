@@ -110,7 +110,6 @@ describe('On the Library page', () => {
     for (let i = 0; i < count; i++) {
       expect(element.allCategoriesInTable.get(i).getText()).toContain(catageroName);
     }
-
     return page.checkStatusCode();
   });
 });

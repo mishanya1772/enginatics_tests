@@ -28,7 +28,9 @@
   },
   "devDependencies": {
     "protractor-flake": "^2.5.0",
+    "jasmine-allure-reporter": "^1.0.2",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.3"
+    "eslint-plugin-import": "^2.17.3",
+    "jasmine-spec-reporter": "^4.2.1"
   }
 }
