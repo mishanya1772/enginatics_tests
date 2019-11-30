@@ -1,12 +1,9 @@
 const element = require('../pageObjects/commonElements');
 const page = new (require('../pageObjects/helper'))();
+const data = require('../testData/baseData');
 
 describe('On the Pricing page', () => {
-  beforeEach(() => {
-    browser.get('https://www.enginatics.com/pricing/');
-    browser.executeScript('window.sessionStorage.clear();');
-    return browser.executeScript('window.localStorage.clear();');
-  });
+  beforeEach(() => page.openMainPageAndCleanAllCache(data.pricingPage));
 
   it('All main links are opened in Header', () => {
     const headerLinks = [element.blitzReport, element.library, element.resources,

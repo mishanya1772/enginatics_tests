@@ -1,13 +1,10 @@
 const element = require('../pageObjects/libraryElements');
 const page = new (require('../pageObjects/helper'))();
 const reportElement = require('../pageObjects/reportElements');
+const data = require('../testData/baseData');
 
 describe('On the Report page', () => {
-  beforeEach(() => {
-    browser.get('https://www.enginatics.com/library/');
-    browser.executeScript('window.sessionStorage.clear();');
-    return browser.executeScript('window.localStorage.clear();');
-  });
+  beforeEach(() => page.openMainPageAndCleanAllCache(data.libraryPage));
 
   it('Back to library link has URL with all filtering items', async () => {
     await page.clickOnElement(element.firstCategoriesInTable);
@@ -16,6 +13,7 @@ describe('On the Report page', () => {
     await page.clickOnElement(element.spoilerButton);
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
     await page.waitForElement(element.flipSwitchLabel);
+
     expect(await reportElement.usernameField.getAttribute('href')).toEqual(url);
     return page.checkStatusCode();
   });
@@ -43,6 +41,7 @@ describe('On the Report page', () => {
   it('XLS file has link for downloading', async () => {
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
     const link = reportElement.xlsFile.getAttribute('href');
+
     expect(link).toContain('/example/');
     return page.checkStatusCode();
   });
@@ -50,11 +49,14 @@ describe('On the Report page', () => {
   it('XML file has link for downloading', async () => {
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
     const link = reportElement.xmlFile.getAttribute('href');
+
     expect(link).toContain('/xml/');
     return page.checkStatusCode();
   });
 
-  /* There is an issue with the askAQuestion button. Locator for this button can change  */
+  /**
+   *There is an issue with the askAQuestion button. Locator for this button can change
+   * */
   it('Forum is opened afer clicking on As a question button', async () => {
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
     await page.clickOnElement(reportElement.askAQuestionButton);

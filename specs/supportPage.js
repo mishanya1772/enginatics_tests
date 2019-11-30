@@ -1,15 +1,13 @@
 const page = new (require('../pageObjects/helper'))();
 const supportElement = require('../pageObjects/supportElements');
+const data = require('../testData/baseData');
 
 describe('On the Support page', () => {
-  beforeEach(() => {
-    browser.get('https://www.enginatics.com/support/');
-    browser.executeScript('window.sessionStorage.clear();');
-    return browser.executeScript('window.localStorage.clear();');
-  });
+  beforeEach(() => page.openMainPageAndCleanAllCache(data.supportPage));
 
   it('Privacy Policy is opened', async () => {
     await page.clickOnElement(supportElement.privacyPoliceLink);
+
     expect(browser.getCurrentUrl()).toBe('https://www.enginatics.com/privacy-policy/');
     return page.checkStatusCode();
   });
@@ -41,6 +39,7 @@ describe('On the Support page', () => {
 
     await page.clickOnElement(supportElement.sendButton);
     const textMainError = await page.getTextFromElement(supportElement.mainErrorValidation);
+
     expect(textMainError).toEqual('Please fill in all required fields and try again.');
     return page.checkStatusCode();
   });

@@ -1,12 +1,9 @@
 const element = require('../pageObjects/forumElements');
 const page = new (require('../pageObjects/helper'))();
+const data = require('../testData/baseData');
 
 describe('On the Forum page', () => {
-  beforeEach(() => {
-    browser.get('https://www.enginatics.com/reports/');
-    browser.executeScript('window.sessionStorage.clear();');
-    browser.executeScript('window.localStorage.clear();');
-  });
+  beforeEach(() => page.openMainPageAndCleanAllCache(data.reportsPage));
 
   it('Popular Posts forms contain links', async () => {
     const count = await element.popularPostsForm.count();
@@ -38,6 +35,7 @@ describe('On the Forum page', () => {
     const categoryName = await page.getTextFromElement(element.allCategories.get(0));
     await page.clickOnElement(element.allCategories.get(0));
     await page.waitForElement(element.allCategories.get(10));
+
     expect(await browser.getCurrentUrl()).toContain(categoryName.slice(0, -1));
     return page.checkStatusCode();
   });
