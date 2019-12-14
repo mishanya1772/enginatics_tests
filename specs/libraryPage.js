@@ -1,22 +1,21 @@
 const element = require('../pageObjects/libraryElements');
 const page = new (require('../pageObjects/helper'))();
+const data = require('../testData/baseData');
 
-describe('Library page', () => {
-  beforeEach(() => {
-    browser.get('https://www.enginatics.com/library/');
-    browser.executeScript('window.sessionStorage.clear();');
-    browser.executeScript('window.localStorage.clear();');
-  });
+describe('On the Library page', () => {
+  beforeEach(() => page.openMainPageAndCleanAllCache(data.libraryPage));
 
   it('Name table contains default 50 libraries', async () => {
     await page.waitForElement(element.listOfNamesLibrary.get(2));
+
     expect(await element.listOfNamesLibrary.count()).toBe(50);
     return page.checkStatusCode();
   });
 
-  it('First library is opened after clicking on his name', async () => {
+  it('First library is opened after clicking on her name', async () => {
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
     await page.waitForElement(element.backToLibraryButton);
+
     expect(await element.backToLibraryButton.isEnabled()).toBe(true);
     return page.checkStatusCode();
   });
@@ -30,23 +29,25 @@ describe('Library page', () => {
   it("After choosing first category in column, it's added to category field", async () => {
     await page.clickOnElement(element.firstCategoriesInTable);
     await page.waitForElement(element.categoriesInCategoriesField);
+
     expect(await element.categoriesInCategoriesField.isEnabled()).toEqual(true);
     return page.checkStatusCode();
   });
 
-  it('All categories in category field are deleted after clicking on X button', async () => {
+  it('All categories in the category field are deleted after clicking on the X button', async () => {
     await page.clickOnElement(element.categoryFilterField);
     await page.clickOnElement(element.firstItemInCategoryFilter);
     await page.waitForElement(element.deleteButtonForCategoryField);
     await page.clickOnElement(element.deleteButtonForCategoryField);
+
     expect(await element.categoriesInCategoriesField.isPresent()).toEqual(false);
     return page.checkStatusCode();
   });
 
   it('XLS file has link for downloading', async () => {
     const link = element.allXLSDocuments.get(0);
-
     await page.waitForElement(element.allXLSDocuments.get(0));
+
     expect(link.getAttribute('href')).toContain('/example/');
     return page.checkStatusCode();
   });
@@ -54,21 +55,23 @@ describe('Library page', () => {
 
   it('XML file has link for downloading', async () => {
     const link = element.allXMLDocuments.get(0);
-
     await page.waitForElement(element.allXMLDocuments.get(0));
+
     expect(link.getAttribute('href')).toContain('/xml/');
     return page.checkStatusCode();
   });
 
-  it('200 libraries are displaying after choosing 200 in Show entries field', async () => {
+  it('200 libraries are displayed after choosing 200 in the Show entries field', async () => {
     await page.inputText(200, element.showEntries);
     await page.waitForElement(element.listOfNamesLibrary.get(2));
+
     expect(await element.listOfNamesLibrary.count()).toBe(200);
     return page.checkStatusCode();
   });
 
   it('Opened the third page after choosing 2 in pagination', async () => {
     await page.clickOnElement(element.paginationThirdPage);
+
     expect(await browser.getCurrentUrl()).toBe('https://www.enginatics.com/library/?pg=3');
     return page.checkStatusCode();
   });
@@ -83,6 +86,7 @@ describe('Library page', () => {
     const nameOfSecondLibrary = await page.getTextFromElement(element.listOfNamesLibrary.get(2));
     await page.inputText(nameOfSecondLibrary, element.searchField);
     await page.clickEnter(element.searchField);
+
     expect(await browser.getCurrentUrl()).toContain('/?pg=1&find=');
     return page.checkStatusCode();
   });
@@ -91,16 +95,15 @@ describe('Library page', () => {
     await page.clickOnElement(element.paginationThirdPage);
     await page.clickOnElement(element.firstCategoriesInTable);
     const filterName = await page.getTextFromElement(element.firstCategoriesInTable);
+
     expect(await browser.getCurrentUrl()).toContain(filterName.slice(0, -1));
     expect(await browser.getCurrentUrl()).toContain('/?pg=3');
     return page.checkStatusCode();
   });
 
-  it('All libraries are filtered by choose category', async () => {
+  it('All libraries are filtered by chosen category', async () => {
     const catageroName = await page.getTextFromElement(element.firstCategoriesInTable);
-
     await page.clickOnElement(element.firstCategoriesInTable);
-    await browser.sleep(4000);
     await page.waitForElement(element.allCategoriesInTable.get(10));
 
     const count = await element.allCategoriesInTable.count();

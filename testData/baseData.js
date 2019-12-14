@@ -6,6 +6,12 @@ const data = {
   shareLinkedinHref: 'https://www.linkedin.com/shareArticle?mini=true&url=https://www.enginatics.com/event/',
   shareEmalHref: 'mailto:?subject=',
   eventsPicturesHref: 'https://www.enginatics.com/wp-content/uploads/',
+  eventsPage: 'https://www.enginatics.com/events/',
+  reportsPage: 'https://www.enginatics.com/reports/',
+  libraryPage: 'https://www.enginatics.com/library/',
+  profilePage: 'https://www.enginatics.com/wp-admin/',
+  pricingPage: 'https://www.enginatics.com/pricing/',
+  supportPage: 'https://www.enginatics.com/support/',
 };
 
 module.exports = data;

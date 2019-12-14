@@ -11,22 +11,20 @@ class basicActions {
     return element.sendKeys(text);
   }
 
-  checkStatusCode() {
-    browser.manage().logs().get('browser').then((browserLog) => {
-      for (let i = 0; i <= browserLog.length - 1; i++) {
-        if (browserLog[i].level.value > 900) {
-          console.log(browserLog[i].message);
-          expect(browserLog[i].message).toEqual(false);
-        }
+  async checkStatusCode() {
+    const browserLog = await browser.manage().logs().get('browser');
+    for (let i = 0; i <= browserLog.length - 1; i++) {
+      if (browserLog[i].level.value > 900) {
+        console.log(browserLog[i].message);
+        expect(browserLog[i].message).toEqual(false);
       }
-    });
+    }
   }
 
-  checkTheLengthOfText(element) {
-    return element.getText().then((letter) => {
-      if ((letter.split(' ').length) > 5) return true;
-      throw 'The length of container less than 5 world';
-    });
+  async checkTheLengthOfText(element) {
+    const letter = await element.getText();
+    if ((letter.split(' ').length) > 5) return true;
+    return ('The length of container less than 5 world');
   }
 
   async clickEnter(element) {
@@ -44,6 +42,12 @@ class basicActions {
 
   async checkCurrentDateInCalendar(date) {
     return $(`#tribe-events-daynum-${date < 10 ? (date.slice(1)) : date}-0`).getCssValue('background-color');
+  }
+
+  async openMainPageAndCleanAllCache(url) {
+    await browser.get(url);
+    await browser.executeScript('window.sessionStorage.clear();');
+    return browser.executeScript('window.localStorage.clear();');
   }
 }
 
