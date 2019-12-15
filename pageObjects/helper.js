@@ -2,12 +2,17 @@ const EC = protractor.ExpectedConditions;
 
 class basicActions {
   async clickOnElement(element) {
-    await browser.wait(EC.visibilityOf(element), 6000);
-    return element.click();
+    try {
+      await browser.wait(EC.visibilityOf(element), 6000);
+      await element.click();
+    } catch (e) {
+      throw console.log(`Element ${element.locator()} not found!`);
+    }
   }
 
   async inputText(text, element) {
     await browser.wait(EC.visibilityOf(element), 6000);
+    await element.clear();
     return element.sendKeys(text);
   }
 

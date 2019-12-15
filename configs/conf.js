@@ -3,6 +3,7 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 exports.config = {
   framework: 'jasmine2',
   specs: ['../specs/*'],
+  baseUrl: 'https://www.enginatics.com',
   useAllAngular2AppRoots: true,
   protractor: true,
   capabilities: {

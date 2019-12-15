@@ -2,6 +2,8 @@ const element = require('../pageObjects/libraryElements');
 const page = new (require('../pageObjects/helper'))();
 const data = require('../testData/baseData');
 
+const EC = protractor.ExpectedConditions;
+
 describe('On the Library page', () => {
   beforeEach(() => page.openMainPageAndCleanAllCache(data.libraryPage));
 
@@ -64,7 +66,7 @@ describe('On the Library page', () => {
   it('200 libraries are displayed after choosing 200 in the Show entries field', async () => {
     await page.inputText(200, element.showEntries);
     await page.waitForElement(element.listOfNamesLibrary.get(2));
-
+    // #reports_table > tbody > tr > td > img
     expect(await element.listOfNamesLibrary.count()).toBe(200);
     return page.checkStatusCode();
   });
@@ -72,7 +74,7 @@ describe('On the Library page', () => {
   it('Opened the third page after choosing 2 in pagination', async () => {
     await page.clickOnElement(element.paginationThirdPage);
 
-    expect(await browser.getCurrentUrl()).toBe('https://www.enginatics.com/library/?pg=3');
+    expect(await browser.getCurrentUrl()).toBe(`${browser.baseUrl}/library/?pg=3`);
     return page.checkStatusCode();
   });
 
@@ -106,8 +108,10 @@ describe('On the Library page', () => {
     await page.clickOnElement(element.firstCategoriesInTable);
     await page.waitForElement(element.allCategoriesInTable.get(10));
 
+    await browser.wait(EC.visibilityOf(element.categoriesInCategoriesField), 5000);
+
     const count = await element.allCategoriesInTable.count();
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < count / 2; i++) {
       expect(element.allCategoriesInTable.get(i).getText()).toContain(catageroName);
     }
     return page.checkStatusCode();

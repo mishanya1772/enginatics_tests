@@ -2,17 +2,19 @@ const element = require('../pageObjects/eventElements');
 const page = new (require('../pageObjects/helper'))();
 const data = require('../testData/baseData');
 
+const EC = protractor.ExpectedConditions;
+
 describe('On the Event page', () => {
   beforeEach(() => page.openMainPageAndCleanAllCache(data.eventsPage));
 
   it('Event with selected date is displayed after entering it.', async () => {
-    await element.fieldForDate.clear();
+    await browser.wait(EC.invisibilityOf(element.loaderIcon), 5000);
     await page.inputText('2018-05', element.fieldForDate);
     await page.clickEnter(element.fieldForDate);
 
+    await browser.wait(EC.invisibilityOf(element.loaderIcon), 5000);
     await page.clickOnElement(element.arrowToRight);
-    await page.waitForElement(element.allDatesInCalendar.get(2));
-    await page.clickOnElement(element.allevenets.get(0));
+    await page.clickOnElement(element.KScope18Event);
     const startDateOfEvent = await page.getTextFromElement(element.eventDateStart);
 
     expect(startDateOfEvent).toContain('June 10, 2018');

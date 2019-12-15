@@ -8,7 +8,7 @@ describe('On the Forum page', () => {
   it('Popular Posts forms contain links', async () => {
     const count = await element.popularPostsForm.count();
     for (let i = 0; i < count; i++) {
-      expect(element.popularPostsForm.get(i).getAttribute('href')).toContain('https://www.enginatics.com/');
+      expect(element.popularPostsForm.get(i).getAttribute('href')).toContain(browser.baseUrl);
       page.checkStatusCode();
     }
   });
@@ -16,7 +16,7 @@ describe('On the Forum page', () => {
   it('Blog Archive and Recent Events have valid URLs', async () => {
     const count = await element.blogArchiveRecentEventsForums.count();
     for (let i = 0; i < count - 1; i++) {
-      expect(element.blogArchiveRecentEventsForums.get(i).getAttribute('href')).toContain('https://www.enginatics.com/');
+      expect(element.blogArchiveRecentEventsForums.get(i).getAttribute('href')).toContain(browser.baseUrl);
       page.checkStatusCode();
     }
   });

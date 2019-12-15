@@ -23,7 +23,7 @@ describe('On the Report page', () => {
     const categoryName = await page.getTextFromElement(reportElement.categoryOnDescForm);
     await page.clickOnElement(reportElement.categoryOnDescForm);
 
-    expect(await browser.getCurrentUrl()).toContain('https://www.enginatics.com/library/');
+    expect(await browser.getCurrentUrl()).toContain(data.libraryPage);
     expect(await browser.getCurrentUrl()).toContain(categoryName);
     return page.checkStatusCode();
   });
@@ -32,7 +32,7 @@ describe('On the Report page', () => {
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
     await page.clickOnElement(reportElement.etrmLibraryFilter);
 
-    expect(reportElement.etrmLibraryMark.getAttribute('href')).toContain('https://www.enginatics.com/library/');
+    expect(reportElement.etrmLibraryMark.getAttribute('href')).toContain(data.libraryPage);
     await page.clickOnElement(reportElement.etrmLibraryFilter);
     expect(reportElement.etrmLibraryMark.getAttribute('href')).toContain('http://etrm.oracle.com/pls/etrm');
     return page.checkStatusCode();
@@ -61,7 +61,7 @@ describe('On the Report page', () => {
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
     await page.clickOnElement(reportElement.askAQuestionButton);
 
-    expect(await browser.getCurrentUrl()).toContain('https://www.enginatics.com/topic/');
+    expect(await browser.getCurrentUrl()).toContain(`${browser.baseUrl}/topic/`);
     expect(await reportElement.submitButton.isPresent()).toEqual(true);
     return page.checkStatusCode();
   });
@@ -70,7 +70,7 @@ describe('On the Report page', () => {
     await page.clickOnElement(element.listOfNamesLibrary.get(0));
     const count = await reportElement.relatedBlitzReportsLinks.count();
     for (let i = 0; i < count; i++) {
-      expect(browser.getCurrentUrl()).toContain('https://www.enginatics.com/reports/');
+      expect(browser.getCurrentUrl()).toContain(data.reportsPage);
     }
 
     return page.checkStatusCode();

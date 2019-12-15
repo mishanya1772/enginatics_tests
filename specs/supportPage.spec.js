@@ -8,7 +8,7 @@ describe('On the Support page', () => {
   it('Privacy Policy is opened', async () => {
     await page.clickOnElement(supportElement.privacyPoliceLink);
 
-    expect(browser.getCurrentUrl()).toBe('https://www.enginatics.com/privacy-policy/');
+    expect(browser.getCurrentUrl()).toBe(`${browser.baseUrl}/privacy-policy/`);
     return page.checkStatusCode();
   });
 

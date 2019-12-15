@@ -3,6 +3,8 @@ const elements = {
   calanderDate: $('.tribe-events-title-bar > div > h2'),
   arrowToRight: $('.tribe-events-nav-next > a'),
   allevenets: $$('h3 > a'),
+  loaderIcon: $('#tribe-events-content > span'),
+  KScope18Event: $('#tribe-events-event-8111-2018-06-10'),
   eventDateStart: $('span.tribe-event-date-start'),
   backToCalendarLing: $('div.back > a'),
   monthButton: $('#tribe-bar-views-toggle'),
