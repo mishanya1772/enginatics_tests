@@ -1,12 +1,9 @@
 # Automation tests
 
-### For set upping on local machine:  
+### Set up e2e tests on local machine:
 
-* install Node   
-* clone project
-* open him (for example, in WebStorm) 
-* open terminal and enter: **npm i**
-* recommend to delete **package-lock.json** file
-* then enter **npm run linux** (for Linux) or **npm run windows**
-* open new tab in terminal and enter **npm run test**
-* don't forger about **username** and **password** data
+* Install Node.js runtime environment: **https://nodejs.org/uk/download/**
+* Clone a project: **git clone https://github.com/mishanya1772/enginatics_tests.git**
+* Install all dependencies: **npm i**
+* Run webdriver-manager: **npm run webdriver-manager:start**
+* Run e2e test: **npm run test**
