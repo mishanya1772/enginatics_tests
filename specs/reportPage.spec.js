@@ -1,6 +1,6 @@
-const element = require('../pageObjects/libraryElements');
-const page = new (require('../pageObjects/helper'))();
-const reportElement = require('../pageObjects/reportElements');
+const element = require('../pageElements/libraryElements');
+const page = new (require('../common/baseObjects'))();
+const reportElement = require('../pageElements/reportElements');
 const data = require('../testData/baseData');
 
 describe('On the Report page', () => {

@@ -1,5 +1,5 @@
-const page = new (require('../pageObjects/helper'))();
-const supportElement = require('../pageObjects/supportElements');
+const page = new (require('../common/baseObjects'))();
+const supportElement = require('../pageElements/supportElements');
 const data = require('../testData/baseData');
 
 describe('On the Support page', () => {

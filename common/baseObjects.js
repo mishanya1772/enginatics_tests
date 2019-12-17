@@ -1,6 +1,21 @@
 const EC = protractor.ExpectedConditions;
 
-class basicActions {
+class baseObjects {
+  constructor() {
+    this.linksInHeader = $$('.menu-text');
+
+    this.blitzReport = 'Blitz Report';
+    this.library = 'Library';
+    this.resources = 'Resources';
+    this.aboutUs = 'About Us';
+    this.contactUs = 'Contact';
+
+    this.firstFAQ = $$('.fusion-toggle-heading').get(0);
+    this.textForFirstFAQ = $$('.panel-body.toggle-content.post-content p');
+
+    this.forCustomerColumn = $$('#text-4 > div.textwidget > p > a');
+  }
+
   async clickOnElement(element) {
     try {
       await browser.wait(EC.visibilityOf(element), 6000);
@@ -54,6 +69,10 @@ class basicActions {
     await browser.executeScript('window.sessionStorage.clear();');
     return browser.executeScript('window.localStorage.clear();');
   }
+
+  async clickByNameFromList(name, locator) {
+    return locator.filter(element => element.getText().then(text => text === name)).click();
+  }
 }
 
-module.exports = basicActions;
+module.exports = baseObjects;

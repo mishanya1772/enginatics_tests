@@ -1,5 +1,5 @@
-const element = require('../pageObjects/eventElements');
-const page = new (require('../pageObjects/helper'))();
+const element = require('../pageElements/eventElements');
+const page = new (require('../common/baseObjects'))();
 const data = require('../testData/baseData');
 
 const EC = protractor.ExpectedConditions;

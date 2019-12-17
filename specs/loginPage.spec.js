@@ -1,5 +1,5 @@
-const element = require('../pageObjects/accountPage');
-const page = new (require('../pageObjects/helper'))();
+const element = require('../pageElements/accountPage');
+const page = new (require('../common/baseObjects'))();
 const data = require('../testData/baseData');
 
 describe('On the Login Page', () => {

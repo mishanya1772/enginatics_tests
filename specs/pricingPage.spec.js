@@ -1,23 +1,22 @@
-const element = require('../pageObjects/commonElements');
-const page = new (require('../pageObjects/helper'))();
+const page = new (require('../common/baseObjects'))();
 const data = require('../testData/baseData');
 
 describe('On the Pricing page', () => {
   beforeEach(() => page.openMainPageAndCleanAllCache(data.pricingPage));
 
-  it('All main links are opened in Header', () => {
-    const headerLinks = [element.blitzReport, element.library, element.resources,
-      element.about, element.contactUs];
+  it('All main links are opened in Header without errors', async () => {
+    const headerLinks = [page.blitzReport, page.library, page.resources, page.aboutUs,
+      page.contactUs];
 
-    for (let i = 0; i < headerLinks.length; i++) {
-      page.clickOnElement(headerLinks[i]);
+    return headerLinks.forEach((link) => {
+      page.clickByNameFromList(link, page.linksInHeader);
       page.checkStatusCode();
-    }
+    });
   });
 
   xit("FAQ's list is opened and contains valid text", () => { // there is no FAQ's
-    const linksOfFAQ = [element.firstFAQ];
-    const textsofFAQ = [element.textForFirstFAQ];
+    const linksOfFAQ = [page.firstFAQ];
+    const textsofFAQ = [page.textForFirstFAQ];
 
     for (let i = 0; i < linksOfFAQ.length; i++) {
       page.clickOnElement(linksOfFAQ[i]);
@@ -28,7 +27,7 @@ describe('On the Pricing page', () => {
 
   it('Main links are opened in the bottom', () => {
     for (let i = 0; i < 5; i++) {
-      page.clickOnElement(element.forCustomerColumn.get(i));
+      page.clickOnElement(page.forCustomerColumn.get(i));
       page.checkStatusCode();
     }
   });
